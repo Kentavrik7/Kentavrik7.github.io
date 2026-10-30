@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Мастерская Анны</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap">
+<meta name="description" content="Примерка цвета стен на фотографиях мастерской, варианты с мебелью и советы по свету, зонам и краске.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Мастерская Анны">
+<meta property="og:description" content="Примерка цвета стен на фотографиях мастерской, варианты с мебелью и советы по свету, зонам и краске.">
+<meta property="og:image" content="https://kentavrik7.github.io/masterskaya/img/r_a2.jpg">
+<meta property="og:url" content="https://kentavrik7.github.io/masterskaya/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%23C6C9AB%22/%3E%3Crect x=%226%22 y=%2219%22 width=%2220%22 height=%227%22 rx=%222%22 fill=%22%2393936C%22/%3E%3C/svg%3E">
+<style>
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
+<style>
+/* Раскладка: одна колонка-тетрадь, снимок во всю ширину, под ним пульт выбора; разделы отбиты «строчкой», как шов на ткани.
+   Тема одна, светлая и нейтральная: цвет стен честнее оценивать на спокойном светлом фоне. */
+:root {
+  color-scheme: light;
+  --paper: #F4F4EF;
+  --card: #FFFFFF;
+  --ink: #272A21;
+  --muted: #65695A;
+  --line: #D8D9CD;
+  --olive: #55613A;
+  --olive-soft: #E6E8DA;
+  --on-olive: #FFFFFF;
+  --clay: #8A5B32;
+  --clay-soft: #F3E9DE;
+  --focus: #2F5D8C;
+  --font-display: "Literata", "PT Serif", Georgia, serif;
+  --font-body: "Golos Text", "Segoe UI", Roboto, Arial, sans-serif;
+  --radius: 10px;
+}
+* { box-sizing: border-box; }
+html, body { background: var(--paper); color: var(--ink); }
+body {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-text-size-adjust: 100%;
+}
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 56px;
+  display: grid;
+  gap: 44px;
+}
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; text-wrap: balance; margin: 0; line-height: 1.2; }
+h1 { font-size: clamp(30px, 6vw, 46px); letter-spacing: -0.01em; }
+h2 { font-size: clamp(24px, 4.2vw, 32px); }
+h3 { font-size: 19px; }
+p { margin: 0; }
+.eyebrow { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+.lead { font-size: 19px; color: var(--ink); max-width: 62ch; }
+.muted { color: var(--muted); }
+.small { font-size: 14.5px; }
+.stack { display: grid; gap: 14px; }
+.stack-lg { display: grid; gap: 22px; }
+section { display: grid; gap: 22px; }
+.stitch {
+  height: 2px; border: 0; margin: 0;
+  background: repeating-linear-gradient(90deg, var(--line) 0 10px, transparent 10px 16px);
+}
+.text { max-width: 66ch; display: grid; gap: 12px; }
+
+/* Коротко */
+.summary {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 22px; display: grid; gap: 14px; max-width: 760px;
+}
+.summary strong { font-weight: 600; }
+.mini-strip { display: flex; gap: 6px; flex-wrap: wrap; }
+.mini-strip span { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); }
+.mini-strip i { width: 22px; height: 22px; border-radius: 5px; border: 1px solid rgba(0,0,0,.12); display: inline-block; }
+
+/* Примерка */
+.studio { display: grid; gap: 16px; min-width: 0; }
+.studio > * { min-width: 0; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+.seg { display: inline-flex; background: var(--olive-soft); border-radius: 999px; padding: 4px; gap: 4px; flex-wrap: wrap; }
+.seg button {
+  font: inherit; font-size: 15px; border: 0; background: transparent; color: var(--ink);
+  padding: 8px 14px; border-radius: 999px; cursor: pointer; min-height: 40px;
+}
+.seg button[aria-pressed="true"] { background: var(--olive); color: var(--on-olive); }
+.frame {
+  position: relative; overflow-x: auto; overflow-y: hidden; border-radius: var(--radius);
+  background: #2b2b27; -webkit-overflow-scrolling: touch; scrollbar-width: thin;
+}
+.frame canvas { display: block; width: 100%; height: auto; max-width: none; }
+@media (min-width: 721px) { .frame canvas { width: auto; max-width: 100%; max-height: 58vh; margin: 0 auto; } }
+.stage { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 2; min-width: 0; background: var(--paper); padding-bottom: 6px; }
+.light-chip { position: absolute; left: 10px; bottom: 16px; white-space: nowrap; font-size: 13.5px; line-height: 1.3; padding: 6px 10px; border-radius: 8px; background: rgba(244,244,239,.92); color: var(--ink); box-shadow: 0 1px 6px rgba(0,0,0,.25); max-width: calc(100% - 20px); pointer-events: none; }
+.compare { position: absolute; right: 10px; bottom: 12px; background: rgba(244,244,239,.92); box-shadow: 0 1px 6px rgba(0,0,0,.25); }
+.compare button { min-height: 36px; padding: 6px 14px; }
+.stage .loading {
+  position: absolute; inset: 0; display: grid; place-items: center; color: #f0f0ea; font-size: 15px;
+  background: rgba(30,30,26,.55);
+}
+.swipe-hint { display: none; font-size: 14px; color: var(--muted); text-align: center; }
+@media (max-width: 720px) {
+  .frame canvas { width: auto; height: 250px; }
+  .stage { margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px))); }
+  .stage .frame { border-radius: 0; }
+  .stage .loading { bottom: 6px; }
+  .swipe-hint { display: block; }
+}
+.status { display: grid; gap: 8px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.status-line { font-size: 15.5px; }
+.meter { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; align-items: center; font-size: 15px; }
+.meter-bar { height: 8px; background: var(--olive-soft); border-radius: 99px; overflow: hidden; }
+.meter-bar b { display: block; height: 100%; width: 50%; background: var(--olive); border-radius: 99px; transition: width .25s ease; }
+.meter-note { grid-column: 1 / -1; color: var(--muted); font-size: 14.5px; }
+
+.controls { display: grid; gap: 24px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .controls { grid-template-columns: 5fr 7fr; align-items: start; } }
+.panel { display: grid; gap: 14px; min-width: 0; }
+.panel-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; }
+
+.presets { display: grid; gap: 10px; }
+.preset {
+  font: inherit; text-align: left; cursor: pointer; color: var(--ink);
+  display: grid; grid-template-columns: 54px 1fr; gap: 12px; align-items: center;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 12px;
+}
+.preset[aria-pressed="true"] { border-color: var(--olive); box-shadow: 0 0 0 2px var(--olive) inset; }
+.preset-swatch { width: 54px; height: 54px; border-radius: 7px; overflow: hidden; display: grid; border: 1px solid rgba(0,0,0,.1); }
+.preset-swatch i { display: block; }
+.preset-name { font-weight: 600; display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.preset-desc { font-size: 14.5px; color: var(--muted); line-height: 1.4; }
+.tag { font-size: 12px; font-weight: 500; letter-spacing: .04em; padding: 2px 8px; border-radius: 99px; background: var(--olive-soft); color: var(--olive); white-space: nowrap; }
+.tag.warn { background: var(--clay-soft); color: var(--clay); }
+
+.targets { display: flex; flex-wrap: wrap; gap: 8px; }
+.targets button {
+  font: inherit; font-size: 15px; cursor: pointer; min-height: 40px;
+  padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--ink);
+}
+.targets button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+
+.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 10px; }
+.chip {
+  font: inherit; text-align: left; cursor: pointer; color: var(--ink); padding: 0; overflow: hidden;
+  background: var(--card); border: 1px solid var(--line); border-radius: 8px; display: grid; grid-template-rows: 58px auto;
+}
+.chip-color { display: block; border-bottom: 1px solid rgba(0,0,0,.08); }
+.chip-body { padding: 7px 9px 9px; display: grid; gap: 2px; }
+.chip-name { font-size: 14px; font-weight: 600; line-height: 1.25; }
+.chip-meta { font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.chip-tag { font-size: 11.5px; color: var(--olive); font-weight: 500; }
+.chip-tag.warn { color: var(--clay); }
+.chip[aria-pressed="true"] { border-color: var(--ink); box-shadow: 0 0 0 2px var(--ink) inset; }
+.chip.concrete .chip-color { background: repeating-linear-gradient(100deg, #9c9a92 0 6px, #b3b1a8 6px 13px); }
+
+.extra { display: grid; gap: 12px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+.row { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
+.switch { display: inline-flex; gap: 10px; align-items: center; cursor: pointer; font-size: 15.5px; }
+.switch input { width: 20px; height: 20px; accent-color: var(--olive); }
+input[type="range"] { width: 100%; accent-color: var(--olive); }
+.custom { display: inline-flex; gap: 10px; align-items: center; font-size: 15px; cursor: pointer; }
+.custom input { width: 44px; height: 36px; border: 1px solid var(--line); border-radius: 8px; padding: 2px; background: var(--card); cursor: pointer; }
+
+button:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* С мебелью */
+.gallery { display: grid; gap: 22px; grid-template-columns: 1fr; }
+@media (min-width: 820px) { .gallery { grid-template-columns: 1fr 1fr; } }
+figure { margin: 0; display: grid; gap: 10px; min-width: 0; }
+figure img { width: 100%; height: auto; border-radius: var(--radius); display: block; background: var(--olive-soft); }
+figcaption { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+figcaption b { font-weight: 600; }
+.link-btn {
+  font: inherit; font-size: 14.5px; cursor: pointer; color: var(--olive); background: transparent;
+  border: 1px solid var(--olive); border-radius: 999px; padding: 6px 12px; min-height: 36px;
+}
+.note { background: var(--clay-soft); color: #4d3520; border-radius: var(--radius); padding: 12px 14px; font-size: 15px; max-width: 760px; }
+
+/* Советы */
+.cards { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 760px) { .cards { grid-template-columns: 1fr 1fr; } }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.zones { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .zones { grid-template-columns: repeat(3, 1fr); } }
+.zone { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; display: grid; gap: 8px; align-content: start; }
+.zone-mark { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; font-weight: 600; }
+.zone-mark.wet { color: #3E6C86; }
+.zone-mark.dust { color: var(--clay); }
+.zone-mark.clean { color: var(--olive); }
+ul.checks { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; max-width: 70ch; }
+ul.checks li { padding-left: 26px; position: relative; }
+ul.checks li::before { content: ""; position: absolute; left: 4px; top: .62em; width: 10px; height: 2px; background: var(--olive); box-shadow: 0 4px 0 var(--olive); }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+th { font-size: 13px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+tr:last-child td { border-bottom: 0; }
+td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cell { display: flex; align-items: center; gap: 8px; }
+.dot { flex: none; display: inline-block; width: 18px; height: 18px; border-radius: 4px; border: 1px solid rgba(0,0,0,.12); }
+footer { display: grid; gap: 10px; max-width: 66ch; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="stack">
+    <div class="eyebrow">Мастерская Анны</div>
+    <h1>Цвет стен для мастерской</h1>
+    <p class="lead">Здесь можно перекрасить стены прямо на фотографиях Вашей мастерской: выберите цвет, и стены на снимке поменяются. Ниже - как комната может выглядеть с мебелью и что важно знать про цвет в подвале.</p>
+  </header>
+
+
+  <section id="primerka" aria-labelledby="h-try">
+    <div class="stack">
+      <h2 id="h-try">Примерить цвет на фото</h2>
+      <p class="muted text">Перекрашиваются стены и, если хотите, потолок. Свет лампы и тени сохраняются: тени и провода на стене темнеют вместе с краской, как на настоящей покрашенной стене. Сначала показан вариант, который подходит лучше всего.</p>
+    </div>
+
+    <div class="studio">
+      <div class="toolbar">
+        <div class="seg" role="group" aria-label="Снимок">
+          <button type="button" id="ph-p1" data-photo="p1" aria-pressed="false">Общий вид</button>
+          <button type="button" id="ph-p2" data-photo="p2" aria-pressed="true">Вглубь</button>
+          <button type="button" id="ph-p3" data-photo="p3" aria-pressed="false">Дальний угол</button>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="frame" id="frame">
+          <canvas id="canvas" width="1600" height="729" aria-label="Фотография мастерской с выбранным цветом стен"></canvas>
+        </div>
+        <div class="loading" id="loading">Загружаю снимок…</div>
+        <div class="light-chip" id="light-chip" aria-hidden="true"></div>
+        <div class="seg compare" role="group" aria-label="Сравнить">
+          <button type="button" id="view-after" aria-pressed="true">Стало</button>
+          <button type="button" id="view-before" aria-pressed="false">Было</button>
+        </div>
+      </div>
+      <p class="swipe-hint">Снимок широкий: проведите по нему пальцем вбок.</p>
+      <p class="small muted">При прокрутке снимок остаётся наверху, чтобы новый цвет было видно сразу.</p>
+
+      <div class="status" aria-live="polite">
+        <div class="status-line" id="status-line"></div>
+        <div class="meter">
+          <span>Свет в комнате</span>
+          <div class="meter-bar" aria-hidden="true"><b id="meter-fill"></b></div>
+          <div class="meter-note" id="meter-note"></div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="panel">
+          <div class="panel-title">Готовые сочетания</div>
+          <p class="small muted">Во всех сочетаниях потолок белый. Вернуть бетон можно в «Своём варианте»: «Потолок», затем «Бетон, как сейчас».</p>
+          <div class="presets" id="presets"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title">Свой вариант</div>
+          <p class="small muted">Сначала выберите, что красим, потом нажмите на цвет.</p>
+          <div class="targets" role="group" aria-label="Что красим" id="targets">
+            <button type="button" id="t-all" data-target="all" aria-pressed="true">Все стены</button>
+            <button type="button" id="t-long" data-target="long" aria-pressed="false">Длинные стены</button>
+            <button type="button" id="t-end" data-target="end" aria-pressed="false">Дальнюю стену</button>
+            <button type="button" id="t-panel" data-target="panel" aria-pressed="false">Низ стен</button>
+            <button type="button" id="t-ceil" data-target="ceil" aria-pressed="false">Потолок</button>
+          </div>
+
+          <div class="extra" id="panel-extra" hidden>
+            <label class="switch"><input type="checkbox" id="panel-on"> Красить низ стен отдельным цветом</label>
+            <div class="stack" style="gap:6px">
+              <label for="panel-height" id="panel-height-label">Высота низа: 100 см</label>
+              <input type="range" id="panel-height" min="60" max="150" step="5" value="100">
+              <span class="small muted">Расчёт для потолка высотой около 2,5 м.</span>
+            </div>
+          </div>
+
+          <div class="swatches" id="swatches"></div>
+          <div class="row">
+            <label class="custom" for="custom-color"><input type="color" id="custom-color" value="#c6c9ab"> Свой цвет</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="summary" aria-label="Коротко" style="justify-self:start">
+    <h2 style="font-size:22px">Коротко: что советую</h2>
+    <p>Оливковый - хороший выбор для мастерской, если он <strong>светлый и приглушённый</strong>, как будто разбавлен молоком. Тёмная насыщенная олива в подвале без окон съест свет.</p>
+    <p>Совет: стены «Оливка с молоком», потолок белый, в мокрой зоне светлая плитка. Хочется глубины - сделайте темнее только низ стен до метра или одну дальнюю стену.</p>
+    <div class="mini-strip">
+      <span><i style="background:#C6C9AB"></i>стены</span>
+      <span><i style="background:#93936C"></i>низ или дальняя стена</span>
+      <span><i style="background:#F6F6F3"></i>потолок</span>
+    </div>
+  </aside>
+
+  <hr class="stitch">
+
+  <section aria-labelledby="h-furn">
+    <div class="stack">
+      <h2 id="h-furn">Как это может выглядеть с мебелью</h2>
+      <p class="note">Эти картинки нарисовал компьютер по Вашим фотографиям. Мебель и техника условные, а цвет стен приблизительный. Точный оттенок смотрите в примерке выше: кнопка под картинкой включит это сочетание на настоящем снимке. Мойка на картинках стоит слишком близко к шитью, в жизни её лучше отделить, как написано ниже.</p>
+    </div>
+    <div class="gallery" id="gallery"></div>
+  </section>
+
+  <hr class="stitch">
+
+  <section aria-labelledby="h-why">
+    <div class="stack">
+      <h2 id="h-why">Оливковый подходит. Важно, какой именно</h2>
+      <div class="text">
+        <p>Спокойствие больше зависит не от самого цвета, а от того, насколько он светлый и приглушённый. Яркие насыщенные цвета бодрят, мягкие и светлые успокаивают. Зелёные и оливковые тона ещё и напоминают о природе, поэтому в них обычно уютно. Но у подвала есть четыре особенности.</p>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <h3>Свет даёт только лампа</h3>
+        <p>Окон нет, поэтому стены работают как отражатель. Светлая олива возвращает в комнату больше половины света, тёмная - примерно десятую часть. В примерке это видно: с тёмной оливой темнеет даже пол.</p>
+      </div>
+      <div class="card">
+        <h3>Тёмная олива легко становится болотной</h3>
+        <p>В Австралии для сигаретных пачек специально искали самый неприятный цвет. Победил тёмный грязно-оливковый. Сначала его так и назвали оливковым, но производители оливок обиделись, и цвет переименовали в тускло-коричневый. В тёмном помещении насыщенная олива уходит именно туда.</p>
+      </div>
+      <div class="card">
+        <h3>На стене цвет сильнее, чем в веере</h3>
+        <p>Маленький образец выглядит скромно, а на всей стене тот же цвет кажется ярче и насыщеннее. Поэтому из веера берите оттенок на шаг светлее и серее того, что понравился.</p>
+      </div>
+      <div class="card">
+        <h3>Лампа меняет цвет</h3>
+        <p>Под тёплым жёлтым светом оливковый уходит в горчичный, под холодным синеватым сереет. Для шитья нужен нейтральный белый свет: на упаковке ламп ищите 4000 К и цветопередачу Ra 90 или выше (иногда пишут CRI). Тогда и нитки к ткани подбираются точно.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="stitch">
+
+  <section aria-labelledby="h-zones">
+    <div class="stack">
+      <h2 id="h-zones">Три дела в одной комнате</h2>
+      <p class="text">Шитьё, чистка пуха и разделка требуют разного. Удобно разделить комнату на зоны и выстроить их от грязного к чистому, как на кухне ресторана: так ткани не встречаются с сырым, а пух не летит на готовые подушки.</p>
+    </div>
+    <div class="zones">
+      <div class="zone">
+        <div class="zone-mark wet">Мокрая зона</div>
+        <h3>Разделка</h3>
+        <p>Ближе к двери, воде и сливу. Стены до высоты 1,5-1,8 м лучше выложить светлой плиткой или закрыть моющимися панелями: кровь и жир смываются, а на светлом сразу видно, где не домыто. Стол и мойка из нержавейки, слив в полу, вытяжка. Розетки здесь только влагозащищённые. Отделить от остальной комнаты можно завесой из прозрачных полос, как в цехах.</p>
+      </div>
+      <div class="zone">
+        <div class="zone-mark dust">Пыльная зона</div>
+        <h3>Чистка пуха</h3>
+        <p>Машина пылит, мелкий пух разлетается и оседает на всём. Нужна вытяжка, гладкие стены без фактуры (рельефная штукатурка собирает пух) и отдельная электрическая линия под мощность машины. Ткани и готовые изделия лучше держать в закрытых шкафах или чехлах.</p>
+      </div>
+      <div class="zone">
+        <div class="zone-mark clean">Чистая зона</div>
+        <h3>Шитьё и раскрой</h3>
+        <p>Подальше от мокрой зоны, в самой тихой части комнаты. Стол для раскроя штор не меньше 2 м, с подходом с трёх сторон, яркий свет над столом и у машинки, полки для тканей. Здесь цвет стен важнее всего: спокойный фон и правильный свет.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="stitch">
+
+  <section aria-labelledby="h-shop">
+    <h2 id="h-shop">В магазине</h2>
+    <ul class="checks">
+      <li>Краска для влажных помещений, с защитой от плесени. В подвале это важно даже при хорошей вентиляции.</li>
+      <li>Моющаяся: на банке ищите класс стойкости к мокрому истиранию 1 или 2. Тогда пух, пыль и брызги смываются губкой.</li>
+      <li>Матовая или полуматовая. Глубокоматовая красивее, но хуже моется.</li>
+      <li>Перед покраской грунтовка с антисептиком.</li>
+      <li>Потолок белой краской: он вернёт в комнату много света. Провода лучше убрать в кабель-каналы.</li>
+      <li>Расход: примерно литр на 4-5 м² стены, если красить в два слоя.</li>
+      <li>Электрика до покраски: в подвале с бетонным полом все розетки через устройство защитного отключения (УЗО), в мокрой зоне ещё и влагозащищённые. Для машины по чистке пуха отдельная линия со своим автоматом.</li>
+    </ul>
+    <div class="summary" style="max-width:none">
+      <h3>Как не ошибиться с цветом</h3>
+      <p>Возьмите 2-3 пробника, покрасьте листы картона примерно 50 на 50 см и повесьте на разные стены. Посмотрите при тех лампах, с которыми будете работать, два-три дня. Выбирайте тот, который через пару дней всё ещё нравится.</p>
+    </div>
+    <div class="stack">
+      <h3>Коды для веера NCS</h3>
+      <p class="small muted text">Экран телефона искажает цвет, поэтому окончательно выбирайте по вееру в магазине. Коды примерные: найдите код в веере NCS и посмотрите соседние оттенки. «Свет» - сколько света отражает краска.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Цвет</th><th>Код NCS</th><th>Свет</th></tr></thead>
+          <tbody id="ncs-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <hr class="stitch">
+
+  <footer>
+    <p>Анна, сомневаться в цвете нормально: стену лучше всего выбирать глазами на месте. Эта страница нужна, чтобы сузить выбор до двух-трёх пробников.</p>
+    <p class="small muted">Примерка перекрашивает настоящие фотографии с учётом теней и света лампы. Насколько темнее или светлее станет комната, посчитано приблизительно. Картинки с мебелью показывают настроение, а не точный проект.</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var COLORS = [
+    { id: "milk_olive", name: "Оливка с молоком", hex: "#C6C9AB", ncs: "S 2010-G70Y", tag: "советую" },
+    { id: "sage", name: "Шалфей", hex: "#B3BCAA", ncs: "S 2010-G30Y", tag: "советую" },
+    { id: "pistachio", name: "Фисташковый туман", hex: "#CED5B5", ncs: "S 1510-G60Y" },
+    { id: "olive", name: "Олива", hex: "#93936C", ncs: "S 4020-G70Y", tag: "для низа и дальней стены" },
+    { id: "dark_olive", name: "Тёмная олива", hex: "#635F3B", ncs: "S 6020-G80Y", tag: "для сравнения", warn: true },
+    { id: "linen", name: "Лён", hex: "#E3D9C9", ncs: "S 1010-Y20R" },
+    { id: "milk", name: "Топлёное молоко", hex: "#F0EAE1", ncs: "S 0505-Y20R" },
+    { id: "eucalyptus", name: "Эвкалипт", hex: "#A1B8B0", ncs: "S 2010-B90G" },
+    { id: "mist", name: "Голубой туман", hex: "#BECFD6", ncs: "S 1505-B10G" },
+    { id: "rose", name: "Пыльная роза", hex: "#D1B2AA", ncs: "S 2010-Y70R" },
+    { id: "white", name: "Белый", hex: "#F6F6F3", ncs: "S 0500-N" }
+  ];
+  var byId = {};
+  COLORS.forEach(function (c) { byId[c.id] = c; });
+
+  var PRESETS = [
+    { id: "milky", name: "Оливка с молоком", tag: "советую",
+      desc: "Все стены светло-оливковые, потолок белый. Самый спокойный и светлый вариант.",
+      s: { long: "#C6C9AB", end: "#C6C9AB", panelOn: false, panel: "#93936C", panelCm: 100, ceil: "#F6F6F3" } },
+    { id: "panel", name: "Олива с панелью",
+      desc: "Низ стен до метра темнее, верх светлый. Низ меньше пачкается, комната уютнее.",
+      s: { long: "#C6C9AB", end: "#C6C9AB", panelOn: true, panel: "#93936C", panelCm: 100, ceil: "#F6F6F3" } },
+    { id: "endwall", name: "Олива на дальней стене",
+      desc: "Длинные стены цвета льна, дальняя стена оливковая. Длинная комната кажется короче.",
+      s: { long: "#E3D9C9", end: "#93936C", panelOn: false, panel: "#93936C", panelCm: 100, ceil: "#F6F6F3" } },
+    { id: "sage", name: "Шалфей",
+      desc: "Серо-зелёный, прохладнее и строже. Меньше других искажает цвет тканей.",
+      s: { long: "#B3BCAA", end: "#B3BCAA", panelOn: false, panel: "#93936C", panelCm: 100, ceil: "#F6F6F3" } },
+    { id: "dark", name: "Тёмная олива", tag: "для сравнения", warn: true,
+      desc: "Так выглядит насыщенный оливковый в подвале. Сравните свет в комнате.",
+      s: { long: "#635F3B", end: "#635F3B", panelOn: false, panel: "#93936C", panelCm: 100, ceil: "#F6F6F3" } }
+  ];
+
+  var RENDERS = [
+    { src: "img/r_a2.jpg", preset: "milky", photo: "p2", title: "Оливка с молоком", where: "вглубь" },
+    { src: "img/r_e.jpg", preset: "milky", photo: "p1", title: "Оливка с молоком", where: "общий вид" },
+    { src: "img/r_b2.jpg", preset: "panel", photo: "p2", title: "Олива с панелью", where: "вглубь" },
+    { src: "img/r_f.jpg", preset: "panel", photo: "p1", title: "Олива с панелью", where: "общий вид" },
+    { src: "img/r_c.jpg", preset: "endwall", photo: "p2", title: "Олива на дальней стене", where: "вглубь" },
+    { src: "img/r_d.jpg", preset: "sage", photo: "p2", title: "Шалфей", where: "вглубь" }
+  ];
+
+  var PHOTOS = {
+    // lamps: центр, радиус ядра, радиус края, порог яркости; focus: куда смотреть на узком экране
+    p1: { img: "img/p1.jpg", aux: "img/p1_aux.png", lum: "img/p1_lum.png", focus: 0.5, lamps: [[963, 192, 14, 28, 225]] },
+    p2: { img: "img/p2.jpg", aux: "img/p2_aux.png", lum: "img/p2_lum.png", focus: 0.47, lamps: [[636, 140, 18, 34, 225]] },
+    p3: { img: "img/p3.jpg", aux: "img/p3_aux.png", lum: "img/p3_lum.png", focus: 0.36, lamps: [[262, 100, 34, 56, 222]] }
+  };
+
+  // Модель света: старые стены из белой шпаклёвки, потолок бетонный
+  var RHO_WALL = 0.80, RHO_CEIL = 0.45, RHO_FLOOR = 0.55, CEIL_H = 250;
+  var OLD_AVG = 0.6 * RHO_WALL + 0.2 * RHO_CEIL + 0.2 * RHO_FLOOR;
+  var CAST = [1.0156, 0.9979, 0.9721];
+
+  var S2L = new Float32Array(256);
+  for (var i = 0; i < 256; i++) { var c = i / 255; S2L[i] = c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); }
+  var LUTN = 4096, L2S = new Uint8ClampedArray(LUTN + 1);
+  for (i = 0; i <= LUTN; i++) { var v = i / LUTN; L2S[i] = Math.round((v <= 0.0031308 ? v * 12.92 : 1.055 * Math.pow(v, 1 / 2.4) - 0.055) * 255); }
+
+  function hexToRgb(h) { h = h.replace("#", ""); return [parseInt(h.substr(0, 2), 16), parseInt(h.substr(2, 2), 16), parseInt(h.substr(4, 2), 16)]; }
+  function hexLin(h) { var r = hexToRgb(h); return [S2L[r[0]], S2L[r[1]], S2L[r[2]]]; }
+  function lrv(h) { var l = hexLin(h); return 0.2126 * l[0] + 0.7152 * l[1] + 0.0722 * l[2]; }
+  function colorName(h) {
+    var up = h.toUpperCase();
+    for (var k = 0; k < COLORS.length; k++) if (COLORS[k].hex === up) return "«" + COLORS[k].name + "»";
+    return "свой цвет";
+  }
+
+  var state = { photo: "p2", view: "after", target: "all", preset: "milky",
+    long: "#C6C9AB", end: "#C6C9AB", panelOn: false, panel: "#93936C", panelCm: 100, ceil: "#F6F6F3" };
+
+  var canvas = document.getElementById("canvas");
+  var ctx = canvas.getContext("2d", { willReadFrequently: true });
+  var frame = document.getElementById("frame");
+  var loading = document.getElementById("loading");
+  var cache = {};
+  var current = null;
+  var firstCenter = {};
+
+  function loadPixels(src) {
+    return new Promise(function (resolve, reject) {
+      var img = new Image();
+      img.onload = function () {
+        var c = document.createElement("canvas");
+        c.width = img.naturalWidth; c.height = img.naturalHeight;
+        var x = c.getContext("2d", { willReadFrequently: true });
+        x.drawImage(img, 0, 0);
+        try { resolve({ img: img, w: c.width, h: c.height, data: x.getImageData(0, 0, c.width, c.height).data }); }
+        catch (e) { reject(e); }
+      };
+      img.onerror = function () { reject(new Error("Не удалось загрузить " + src)); };
+      img.src = src;
+    });
+  }
+
+  function prepare(key) {
+    if (cache[key]) return Promise.resolve(cache[key]);
+    var p = PHOTOS[key];
+    return Promise.all([loadPixels(p.img), loadPixels(p.aux), loadPixels(p.lum)]).then(function (r) {
+      var rgb = r[0], aux = r[1].data, lum = r[2].data, w = rgb.w, h = rgb.h, n = w * h, d = rgb.data;
+      var lin = new Float32Array(n * 3), zone = new Uint8Array(n), hf = new Uint8Array(n);
+      var paint = new Float32Array(n), shade = new Float32Array(n);
+      for (var i = 0, j = 0; i < n; i++, j += 4) {
+        var R = d[j], G = d[j + 1], B = d[j + 2];
+        var lr = S2L[R], lg = S2L[G], lb = S2L[B];
+        lin[i * 3] = lr; lin[i * 3 + 1] = lg; lin[i * 3 + 2] = lb;
+        var z = ((aux[j] + 40) / 80) | 0;
+        zone[i] = z; hf[i] = aux[j + 1];
+        if (z === 0) continue;
+        var a = aux[j + 2] / 255;
+        if (a <= 0) continue;
+        var L = 0.2126 * lr + 0.7152 * lg + 0.0722 * lb;
+        var Lb = Math.max(S2L[lum[j]], 1e-4);
+        var detail = L / Lb;
+        var keepDark = z === 3 ? (0.2 - detail) / 0.15 : 0;
+        keepDark = keepDark < 0 ? 0 : keepDark > 1 ? 1 : keepDark;
+        var mx = Math.max(R, G, B), mn = Math.min(R, G, B);
+        var keepC = (mx - mn - 38) / 25; keepC = keepC < 0 ? 0 : keepC > 1 ? 1 : keepC;
+        var keep = Math.max(keepDark, keepC);
+        paint[i] = a * (1 - keep);
+        var rho = z === 3 ? RHO_CEIL : RHO_WALL;
+        // мелкие пятна шпаклёвки сглаживаем, тени и провода темнеют вместе с новой краской
+        var k = z === 3 ? 0.2 : 0.45, t = z === 3 ? 0.8 : 0.12;
+        var ld = Math.log(Math.max(detail, 1e-4));
+        shade[i] = (Lb / rho) * Math.exp(ld - (1 - k) * t * Math.tanh(ld / t));
+      }
+      // Лампа: не красим и не притушаем вместе с комнатой, она светит сама
+      var lampK = new Float32Array(n);
+      p.lamps.forEach(function (L4) {
+        var cx = L4[0], cy = L4[1], rin = L4[2], rout = L4[3], thr = L4[4], R3 = 3;
+        var x0 = Math.max(0, Math.floor(cx - rout - R3)), x1 = Math.min(w - 1, Math.ceil(cx + rout + R3));
+        var y0 = Math.max(0, Math.floor(cy - rout - R3)), y1 = Math.min(h - 1, Math.ceil(cy + rout + R3));
+        for (var y = y0 + R3; y <= y1 - R3; y++) for (var x = x0 + R3; x <= x1 - R3; x++) {
+          var dd = Math.hypot(x + 0.5 - cx, y + 0.5 - cy);
+          var ring = (rout - dd) / (rout - rin); if (ring <= 0) continue; if (ring > 1) ring = 1;
+          var sum = 0, cnt = 0;
+          for (var yy = y - R3; yy <= y + R3; yy++) for (var xx = x - R3; xx <= x + R3; xx++) {
+            var jj = (yy * w + xx) * 4; sum += Math.min(d[jj], d[jj + 1], d[jj + 2]); cnt++;
+          }
+          var br = (sum / cnt - thr) / 25; if (br <= 0) continue; if (br > 1) br = 1;
+          var ii = y * w + x, kk = ring * br;
+          if (kk > lampK[ii]) lampK[ii] = kk;
+        }
+      });
+      for (var m = 0; m < n; m++) if (lampK[m] > 0) paint[m] *= 1 - lampK[m];
+      var entry = { w: w, h: h, img: rgb.img, lin: lin, zone: zone, hf: hf, paint: paint, shade: shade, lampK: lampK,
+        out: ctx.createImageData(w, h) };
+      cache[key] = entry;
+      return entry;
+    });
+  }
+
+  function lightFactor() {
+    var wl = lrv(state.long) * 0.75 + lrv(state.end) * 0.25;
+    if (state.panelOn) { var pf = state.panelCm / CEIL_H; wl = wl * (1 - pf) + lrv(state.panel) * pf; }
+    var rc = state.ceil ? lrv(state.ceil) : RHO_CEIL;
+    var nw = 0.6 * wl + 0.2 * rc + 0.2 * RHO_FLOOR;
+    return { F: Math.pow((1 - OLD_AVG) / (1 - nw), 0.4), wall: wl };
+  }
+
+  function draw() {
+    if (!current) return;
+    var e = current;
+    if (canvas.width !== e.w || canvas.height !== e.h) { canvas.width = e.w; canvas.height = e.h; }
+    if (state.view === "before") { ctx.drawImage(e.img, 0, 0); return; }
+    var lf = lightFactor(), F = lf.F;
+    var tl = hexLin(state.long), te = hexLin(state.end), tp = hexLin(state.panel), tc = state.ceil ? hexLin(state.ceil) : null;
+    var cols = [null, tl, te, tc];
+    var pfByte = state.panelOn ? Math.round(state.panelCm / CEIL_H * 255) : -1;
+    var cr = CAST[0], cg = CAST[1], cb = CAST[2];
+    var lin = e.lin, zone = e.zone, hf = e.hf, paint = e.paint, shade = e.shade, lampK = e.lampK, out = e.out.data, n = e.w * e.h;
+    for (var i = 0, j = 0, q = 0; i < n; i++, j += 4, q += 3) {
+      var r = lin[q], g = lin[q + 1], b = lin[q + 2];
+      var p = paint[i];
+      if (p > 0) {
+        var z = zone[i], T = cols[z];
+        if (z !== 3 && hf[i] < pfByte) T = tp;
+        if (T) {
+          var s = shade[i];
+          r += (T[0] * cr * s - r) * p;
+          g += (T[1] * cg * s - g) * p;
+          b += (T[2] * cb * s - b) * p;
+        }
+      }
+      var f = F + (1 - F) * lampK[i];
+      r *= f; g *= f; b *= f;
+      out[j] = L2S[r >= 1 ? LUTN : (r * LUTN) | 0];
+      out[j + 1] = L2S[g >= 1 ? LUTN : (g * LUTN) | 0];
+      out[j + 2] = L2S[b >= 1 ? LUTN : (b * LUTN) | 0];
+      out[j + 3] = 255;
+    }
+    ctx.putImageData(e.out, 0, 0);
+  }
+
+  var pending = false;
+  function schedule() {
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(function () { pending = false; draw(); });
+  }
+
+  function centerFrame() {
+    var extra = frame.scrollWidth - frame.clientWidth;
+    if (extra > 0) frame.scrollLeft = Math.max(0, Math.min(extra, PHOTOS[state.photo].focus * frame.scrollWidth - frame.clientWidth / 2));
+  }
+
+  function showPhoto(key) {
+    state.photo = key;
+    ["p1", "p2", "p3"].forEach(function (k) { document.getElementById("ph-" + k).setAttribute("aria-pressed", String(k === key)); });
+    loading.hidden = false;
+    loading.textContent = "Загружаю снимок…";
+    prepare(key).then(function (e) {
+      if (state.photo !== key) return;
+      current = e;
+      loading.hidden = true;
+      draw();
+      requestAnimationFrame(centerFrame);
+    }).catch(function () {
+      loading.textContent = "Не получилось открыть снимок. Обновите страницу.";
+    });
+  }
+
+  // Пульт
+  var swatchBox = document.getElementById("swatches");
+  var presetBox = document.getElementById("presets");
+  var targetBox = document.getElementById("targets");
+  var panelExtra = document.getElementById("panel-extra");
+  var panelOn = document.getElementById("panel-on");
+  var panelH = document.getElementById("panel-height");
+  var panelHL = document.getElementById("panel-height-label");
+  var custom = document.getElementById("custom-color");
+
+  function pct(h) { return Math.round(lrv(h) * 100); }
+
+  function buildPresets() {
+    PRESETS.forEach(function (p) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "preset"; b.id = "preset-" + p.id; b.dataset.preset = p.id;
+      var sw = document.createElement("span"); sw.className = "preset-swatch";
+      var parts;
+      if (p.s.panelOn) { sw.style.gridTemplateRows = "1fr 1fr"; parts = [p.s.long, p.s.panel]; }
+      else if (p.s.long !== p.s.end) { sw.style.gridTemplateColumns = "1.4fr 1fr"; parts = [p.s.long, p.s.end]; }
+      else { parts = [p.s.long]; }
+      parts.forEach(function (c) { var i = document.createElement("i"); i.style.background = c; sw.appendChild(i); });
+      var body = document.createElement("span"); body.style.display = "grid"; body.style.gap = "2px";
+      var nm = document.createElement("span"); nm.className = "preset-name"; nm.textContent = p.name;
+      if (p.tag) { var t = document.createElement("span"); t.className = "tag" + (p.warn ? " warn" : ""); t.textContent = p.tag; nm.appendChild(t); }
+      var ds = document.createElement("span"); ds.className = "preset-desc"; ds.textContent = p.desc;
+      body.appendChild(nm); body.appendChild(ds);
+      b.appendChild(sw); b.appendChild(body);
+      b.addEventListener("click", function () { applyPreset(p.id); });
+      presetBox.appendChild(b);
+    });
+  }
+
+  function chip(c, extraClass) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "chip" + (extraClass ? " " + extraClass : "");
+    var col = document.createElement("span"); col.className = "chip-color";
+    if (c) col.style.background = c.hex;
+    var body = document.createElement("span"); body.className = "chip-body";
+    var nm = document.createElement("span"); nm.className = "chip-name"; nm.textContent = c ? c.name : "Бетон, как сейчас";
+    var mt = document.createElement("span"); mt.className = "chip-meta"; mt.textContent = c ? "отражает " + pct(c.hex) + "% света" : "без покраски";
+    body.appendChild(nm); body.appendChild(mt);
+    if (c && c.tag) { var t = document.createElement("span"); t.className = "chip-tag" + (c.warn ? " warn" : ""); t.textContent = c.tag; body.appendChild(t); }
+    b.appendChild(col); b.appendChild(body);
+    return b;
+  }
+
+  function buildSwatches() {
+    swatchBox.innerHTML = "";
+    if (state.target === "ceil") {
+      var cb = chip(null, "concrete"); cb.id = "sw-concrete"; cb.dataset.hex = "";
+      cb.addEventListener("click", function () { pick(null); });
+      swatchBox.appendChild(cb);
+    }
+    COLORS.forEach(function (c) {
+      var b = chip(c); b.id = "sw-" + c.id; b.dataset.hex = c.hex;
+      b.addEventListener("click", function () { pick(c.hex); });
+      swatchBox.appendChild(b);
+    });
+    markSwatches();
+  }
+
+  function targetValue() {
+    switch (state.target) {
+      case "long": return state.long;
+      case "end": return state.end;
+      case "panel": return state.panel;
+      case "ceil": return state.ceil;
+      default: return state.long === state.end ? state.long : undefined;
+    }
+  }
+
+  function markSwatches() {
+    var v = targetValue();
+    if (state.target === "panel" && !state.panelOn) v = undefined;
+    var vv = v === null ? "" : (v || "#none").toUpperCase();
+    Array.prototype.forEach.call(swatchBox.children, function (b) {
+      b.setAttribute("aria-pressed", String((b.dataset.hex || "").toUpperCase() === vv));
+    });
+    if (v) custom.value = v.toLowerCase();
+  }
+
+  function pick(hex) {
+    state.preset = null;
+    state.view = "after";
+    switch (state.target) {
+      case "long": state.long = hex; break;
+      case "end": state.end = hex; break;
+      case "panel": state.panel = hex; state.panelOn = true; break;
+      case "ceil": state.ceil = hex; break;
+      default: state.long = hex; state.end = hex;
+    }
+    sync();
+  }
+
+  function applyPreset(id) {
+    var p = PRESETS.filter(function (x) { return x.id === id; })[0];
+    if (!p) return;
+    Object.keys(p.s).forEach(function (k) { state[k] = p.s[k]; });
+    state.preset = id;
+    state.view = "after";
+    sync();
+  }
+
+  function setTarget(t) {
+    state.target = t;
+    Array.prototype.forEach.call(targetBox.children, function (b) { b.setAttribute("aria-pressed", String(b.dataset.target === t)); });
+    panelExtra.hidden = t !== "panel";
+    buildSwatches();
+  }
+
+  function statusText() {
+    var parts = [];
+    if (state.long === state.end) parts.push("Стены: " + colorName(state.long));
+    else parts.push("длинные стены: " + colorName(state.long) + ", дальняя стена: " + colorName(state.end));
+    if (state.panelOn) parts.push("низ до " + state.panelCm + " см: " + colorName(state.panel));
+    parts.push(state.ceil ? "потолок: " + colorName(state.ceil) : "потолок: бетон");
+    parts[0] = parts[0].charAt(0).toUpperCase() + parts[0].slice(1);
+    return parts.join(", ") + ".";
+  }
+
+  function sync() {
+    Array.prototype.forEach.call(presetBox.children, function (b) { b.setAttribute("aria-pressed", String(b.dataset.preset === state.preset)); });
+    document.getElementById("view-after").setAttribute("aria-pressed", String(state.view === "after"));
+    document.getElementById("view-before").setAttribute("aria-pressed", String(state.view === "before"));
+    panelOn.checked = state.panelOn;
+    panelH.value = state.panelCm;
+    panelHL.textContent = "Высота низа: " + state.panelCm + " см";
+    markSwatches();
+    var lf = lightFactor();
+    var F = lf.F;
+    var line = document.getElementById("status-line");
+    var note = document.getElementById("meter-note");
+    var fill = document.getElementById("meter-fill");
+    var chipEl = document.getElementById("light-chip");
+    if (state.view === "before") {
+      chipEl.textContent = "Как сейчас";
+      line.textContent = "Так комната выглядит сейчас: белая шпаклёвка и бетонный потолок.";
+      fill.style.width = "60%";
+      note.textContent = "Для сравнения нажмите «Стало».";
+    } else {
+      line.textContent = statusText();
+      fill.style.width = Math.max(8, Math.min(100, Math.round(F * 60))) + "%";
+      var word = F >= 1.03 ? "светлее, чем сейчас" : F >= 0.97 ? "примерно как сейчас" : F >= 0.88 ? "чуть темнее, чем сейчас" : F >= 0.78 ? "заметно темнее, чем сейчас" : "мрачно, понадобится намного больше ламп";
+      note.textContent = "Стены отражают около " + Math.round(lf.wall * 100) + "% света. В комнате будет " + word + ".";
+      chipEl.textContent = "Свет: " + (F >= 1.03 ? "светлее" : F >= 0.97 ? "как сейчас" : F >= 0.88 ? "чуть темнее" : F >= 0.78 ? "заметно темнее" : "мрачно");
+    }
+    schedule();
+  }
+
+  ["p1", "p2", "p3"].forEach(function (k) {
+    document.getElementById("ph-" + k).addEventListener("click", function () { showPhoto(k); });
+  });
+  document.getElementById("view-after").addEventListener("click", function () { state.view = "after"; sync(); });
+  document.getElementById("view-before").addEventListener("click", function () { state.view = "before"; sync(); });
+  Array.prototype.forEach.call(targetBox.children, function (b) {
+    b.addEventListener("click", function () { setTarget(b.dataset.target); });
+  });
+  panelOn.addEventListener("change", function () { state.panelOn = panelOn.checked; state.preset = null; state.view = "after"; sync(); });
+  panelH.addEventListener("input", function () { state.panelCm = +panelH.value; state.panelOn = true; state.preset = null; state.view = "after"; sync(); });
+  custom.addEventListener("input", function () { pick(custom.value.toUpperCase()); });
+
+  // Галерея
+  var gallery = document.getElementById("gallery");
+  RENDERS.forEach(function (r) {
+    var f = document.createElement("figure");
+    var img = document.createElement("img");
+    img.src = r.src; img.alt = "Мастерская с мебелью: " + r.title + ", " + r.where; img.loading = "lazy";
+    img.width = 1536; img.height = 688;
+    var cap = document.createElement("figcaption");
+    var t = document.createElement("span"); t.innerHTML = "<b></b> <span class=\"muted\"></span>";
+    t.querySelector("b").textContent = r.title; t.querySelector("span").textContent = r.where;
+    var btn = document.createElement("button"); btn.type = "button"; btn.className = "link-btn"; btn.textContent = "Примерить на фото";
+    btn.addEventListener("click", function () {
+      applyPreset(r.preset);
+      if (state.photo !== r.photo) showPhoto(r.photo);
+      document.getElementById("primerka").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    cap.appendChild(t); cap.appendChild(btn);
+    f.appendChild(img); f.appendChild(cap);
+    gallery.appendChild(f);
+  });
+
+  // Таблица для веера
+  var tb = document.getElementById("ncs-body");
+  COLORS.forEach(function (c) {
+    var tr = document.createElement("tr");
+    var td1 = document.createElement("td"); var cell = document.createElement("span"); cell.className = "cell";
+    var dot = document.createElement("span"); dot.className = "dot"; dot.style.background = c.hex;
+    cell.appendChild(dot); cell.appendChild(document.createTextNode(c.name)); td1.appendChild(cell);
+    var td2 = document.createElement("td"); td2.className = "num"; td2.textContent = c.ncs;
+    var td3 = document.createElement("td"); td3.className = "num"; td3.textContent = pct(c.hex) + "%";
+    tr.appendChild(td1); tr.appendChild(td2); tr.appendChild(td3);
+    tb.appendChild(tr);
+  });
+
+  buildPresets();
+  setTarget("all");
+  sync();
+  showPhoto("p2");
+})();
+</script>
+</body>
+</html>
